@@ -1,0 +1,88 @@
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: #2f4454;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+#headerSection {
+  width: 100vw;
+  border-bottom: white 3px solid;
+}
+#header {
+  width: 73vw;
+  margin: auto;
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+.navIcon,
+.navLinks-container {
+  margin-left: auto;
+}
+.navLinks-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navLinks {
+  margin: 0 1vw 0 1vw;
+}
+
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.hero-header {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: 72px;
+  margin: 0;
+}
+
+.job {
+  font-size: 24px;
+}
+.lName {
+  background: #fff;
+  color: #000;
+  line-height: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+#aboutSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 73vw;
+  margin: auto;
+}
+
+#connect {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid red;
+  width: 25%;
+  margin: auto;
+}
+.iconDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
