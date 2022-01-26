@@ -1,3 +1,11 @@
+:root {
+  --main-width: 72vw;
+  --sFont: 1rem;
+  --mFont: 1.2rem;
+  --lFont: 2rem;
+  --xlFont: 4rem;
+}
+
 body {
   box-sizing: border-box;
   padding: 0;
@@ -5,18 +13,21 @@ body {
   background: #2f4454;
   font-family: "Montserrat", sans-serif;
   color: white;
-  font-size: 16px;
+  font-size: var(--sFont);
+}
+#heroSection,
+#aboutSection {
+  padding: 5rem 0;
 }
 a {
   text-decoration: none;
   color: inherit;
 }
 #headerSection {
-  width: 100vw;
   border-bottom: white 3px solid;
 }
 #header {
-  width: 73vw;
+  width: var(--main-width);
   margin: auto;
   margin-top: 2vw;
   display: flex;
@@ -49,40 +60,67 @@ a {
 .hero-header {
   font-family: "Oswald", sans-serif;
   text-align: center;
-  font-size: 72px;
+  font-size: var(--xlFont);
   margin: 0;
 }
 
 .job {
-  font-size: 24px;
+  font-size: var(--lFont);
 }
 .lName {
   background: #fff;
   color: #000;
-  line-height: 100%;
+  width: fit-content;
   text-align: center;
   margin: auto;
 }
 
 #aboutSection {
+  background: #fff;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 73vw;
   margin: auto;
 }
 
 #connect {
   display: flex;
   flex-direction: column;
-  border: 3px solid red;
-  width: 25%;
-  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+#aboutR {
+  margin-right: 25vw;
+}
+.bio {
+  font-weight: 500;
+}
+.head-shot {
+  width: 15vw;
+}
+.connectTitle {
+  font-weight: 400;
+}
+#aboutL {
+  margin-left: 25vw;
+}
+.connectTop > h2 {
+  height: fit-content;
+  width: fit-content;
+  border-bottom: black 0.1rem solid;
+  font-size: 1rem;
+  padding-bottom: 0.75rem;
 }
 .iconDiv {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+}
+.icon {
+  margin: 0 0.4rem;
 }

@@ -45,7 +45,6 @@ const header = (
     </section>
 );
 // HERO SECTION
-
 const heroName = (
     <div className="hero-wrapper">
         <h1 className="hero-header fName">TYLER</h1>
@@ -66,20 +65,30 @@ const bio = (
 )
 
 const profilePic = (
-    <img src="./profile.svg" alt="head shot" width="250px"></img>
+    <img className="head-shot" src="./profile.svg" alt="head shot"></img>
 )
 //Making Connect Box
 
-const connectTop = (<h2>CONNECT WITH TYLER</h2>)
+const connectTop = (<h2 className="connectTitle">CONNECT WITH TYLER</h2>)
 const connectBot = (
     <div className="iconDiv">
-        <Icon icon="bi:phone" />
-        <Icon icon="carbon:email" />
-        <Icon icon="feather:github" />
-        <Icon icon="eva:linkedin-fill" />
-        <Icon icon="carbon:document-attachment" />
+        <a href="tel:440-537-7162" className="icon">
+            <Icon icon="bi:phone" />
+        </a>
+        <a href="mailto:tyler.riehl16@gmail.com" className="icon">
+            <Icon className="icon" icon="carbon:email" />
+        </a>
+        <a href="https://github.com/riehltj" className="icon">
+            <Icon className="icon" icon="feather:github" />
+        </a>
+        <a href="https://www.linkedin.com/in/tylerriehl2016" className="icon">
+            <Icon className="icon" icon="eva:linkedin-fill" />
+        </a>
+        <a href="./public/tylerriehl2021.pdf" className='icon'>
+            <Icon className="icon" icon="carbon:document-attachment" />
+        </a>
 
-    </div>
+    </div >
 )
 const connect = (
     <section id="connect">
@@ -94,5 +103,35 @@ const about = (
     </section>
 )
 
+//Project Section
 
-ReactDOM.render([header, hero, about], document.getElementById("root"));
+const projectTitle = (
+    <h1 className="projectTitle">PROJECTS</h1>
+)
+//cards
+const learnMoreArrow = (
+    <a href="#learnMore" >Learn More <Icon icon="ls:dropdown" /></a>
+)
+const projectList = [
+    { title: "SOS Cat Rescue Redesign", imgUrl: './public/cards/SOSCat.png', link: 'https://riehltj.github.io/SOSCatTucson/', },
+];
+
+export default function MyReactComponent() {
+    return (
+        <>
+            {projectList.map(({ title, footer }) => (
+                // <p key={coffee}>Coffee type {coffee} in a {size} size.</p>
+
+                <div className="card">
+                    <h1 className="card-title" key={title}>{title}</h1>
+                    <h1 className="footer">{learnMoreArrow}</h1>
+                </div>
+            ))}
+
+        </>
+    );
+}
+
+
+
+ReactDOM.render([header, hero, about, <MyReactComponent />], document.getElementById("root"));
