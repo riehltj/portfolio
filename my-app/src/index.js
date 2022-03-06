@@ -104,34 +104,184 @@ const about = (
 )
 
 //Project Section
-
-const projectTitle = (
-    <h1 className="projectTitle">PROJECTS</h1>
-)
-//cards
-const learnMoreArrow = (
-    <a href="#learnMore" >Learn More <Icon icon="ls:dropdown" /></a>
-)
 const projectList = [
-    { title: "SOS Cat Rescue Redesign", imgUrl: './public/cards/SOSCat.png', link: 'https://riehltj.github.io/SOSCatTucson/', },
-];
+    {
+        id: 0,
+        header: "SOS CAT Tucson",
+        img: "/cards/SOSCat.png",
+        src: "https://riehltj.github.io/SOSCatTucson/",
+        alt: "SOS Cat Web - Screenshot",
+    },
+    {
+        id: 1,
+        header: "SOS CAT Tucson",
+        img: "/cards/motivation ss.png",
+        src: "https://riehltj.github.io/SOSCatTucson/",
+        alt: "SOS Cat Web - Screenshot",
+    },
+    {
+        id: 2,
+        header: "SOS CAT Tucson",
+        img: "/cards/watch img.png",
+        src: "https://riehltj.github.io/SOSCatTucson/",
+        alt: "SOS Cat Web - Screenshot",
+    },
+    {
+        id: 3,
+        header: "SOS CAT Tucson",
+        img: "/cards/todo img.png",
+        src: "https://riehltj.github.io/SOSCatTucson/",
+        alt: "SOS Cat Web - Screenshot",
+    },
+]
 
-export default function MyReactComponent() {
+
+const Cards = () => {
     return (
-        <>
-            {projectList.map(({ title, footer }) => (
-                // <p key={coffee}>Coffee type {coffee} in a {size} size.</p>
+        <div className="card-container">
+            {projectList.map((project) => (
+                <div className='card'>
+                    <h1 className="header">{project.header}</h1>
+                    <a href={project.src}>
+                        <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
 
-                <div className="card">
-                    <h1 className="card-title" key={title}>{title}</h1>
-                    <h1 className="footer">{learnMoreArrow}</h1>
+                    </a>
+                    <h1 id={project.id}>Learn More <Icon icon="gridicons:dropdown" /></h1>
+                </div>
+            ))
+            }
+        </div >
+    );
+};
+
+//MY STACK SECTION
+
+
+const frontEndStack = [
+    {
+        icon: 'akar-icons:html-fill',
+        text: "html",
+    },
+    {
+        icon: 'akar-icons:css-fill',
+        text: "css",
+    },
+    {
+        icon: 'fa-brands:js-square',
+        text: "js",
+    },
+    {
+        icon: 'akar-icons:sass-fill',
+        text: "sass",
+    },
+    {
+        icon: 'akar-icons:react-fill',
+        text: "react",
+    },
+]
+
+const Frontend = () => {
+    return (
+        <div className='frontend-container'>
+            <h1>FRONTEND</h1>
+
+            {frontEndStack.map((tech) => (
+                <div className='frontend-box'>
+                    <Icon icon={tech.icon}></Icon>
+                    <h3>{tech.text}</h3>
                 </div>
             ))}
+        </div>
+    )
+}
 
-        </>
-    );
+const designCMS = [
+    {
+        icon: 'akar-icons:figma-fill',
+        text: "figma",
+    },
+    {
+        icon: 'cib:adobe-photoshop',
+        text: "ps",
+    },
+    {
+        icon: 'file-icons:gimp',
+        text: "gimp",
+    },
+    {
+        icon: 'akar-icons:vscode-fill',
+        text: "vscode",
+    },
+    {
+        icon: 'simple-icons:contentful',
+        text: "contentful",
+    },
+]
+
+const Design = () => {
+    return (
+        <div className='design-container'>
+            <h1>DESIGN / CMS</h1>
+
+            {designCMS.map((tech) => (
+                <div className='design-box'>
+                    <Icon icon={tech.icon}></Icon>
+                    <h3>{tech.text}</h3>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+const backend = [
+    {
+        icon: 'akar-icons:node-fill',
+        text: "node js",
+    },
+    {
+        icon: 'simple-icons:express',
+        text: "express",
+    },
+    {
+        icon: 'bxl:netlify',
+        text: "netlify",
+    },
+    {
+        icon: 'bxl:php',
+        text: "php",
+    },
+    {
+        icon: 'akar-icons:python-fill',
+        text: "python",
+    },
+]
+
+const Backend = () => {
+    return (
+        <div className='backend-container'>
+            <h1>BACKEND</h1>
+            {backend.map((tech) => (
+                <div className='backend-box'>
+                    <Icon icon={tech.icon}></Icon>
+                    <h3>{tech.text}</h3>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+const Connect = () => {
+    // add form information followed by icons
+
 }
 
 
 
-ReactDOM.render([header, hero, about, <MyReactComponent />], document.getElementById("root"));
+
+
+
+
+
+
+
+ReactDOM.render([header, hero, about, <Cards />, <Frontend />, <Design />, <Backend />], document.getElementById("root"));
