@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style.css';
 import { Icon } from '@iconify/react';
 
 
@@ -114,7 +114,7 @@ const projectList = [
     },
     {
         id: 1,
-        header: "SOS CAT Tucson",
+        header: "Motivation Bot",
         img: "/cards/motivation ss.png",
         src: "https://riehltj.github.io/SOSCatTucson/",
         alt: "SOS Cat Web - Screenshot",
@@ -133,24 +133,34 @@ const projectList = [
         src: "https://riehltj.github.io/SOSCatTucson/",
         alt: "SOS Cat Web - Screenshot",
     },
+    {
+        id: 4,
+        header: "SOS CAT Tucson",
+        img: "/cards/todo img.png",
+        src: "https://riehltj.github.io/SOSCatTucson/",
+        alt: "SOS Cat Web - Screenshot",
+    },
 ]
 
 
 const Cards = () => {
     return (
-        <div className="card-container">
-            {projectList.map((project) => (
-                <div className='card'>
-                    <h1 className="header">{project.header}</h1>
-                    <a href={project.src}>
-                        <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
+        <section id='projects'>
+            <h1 className='project-title'>PROJECTS</h1>
+            <div className="card-container">
+                {projectList.map((project) => (
+                    <div className='card'>
+                        <h1 className="header">{project.header}</h1>
+                        <a href={project.src}>
+                            <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
 
-                    </a>
-                    <h1 id={project.id}>Learn More <Icon icon="gridicons:dropdown" /></h1>
-                </div>
-            ))
-            }
-        </div >
+                        </a>
+                        <h1 id={project.id}>Learn More <Icon icon="gridicons:dropdown" /></h1>
+                    </div>
+                ))
+                }
+            </div >
+        </section>
     );
 };
 
@@ -182,11 +192,11 @@ const frontEndStack = [
 
 const Frontend = () => {
     return (
-        <div className='frontend-container'>
+        <div className='stack-container'>
             <h1>FRONTEND</h1>
 
             {frontEndStack.map((tech) => (
-                <div className='frontend-box'>
+                <div className='box'>
                     <Icon icon={tech.icon}></Icon>
                     <h3>{tech.text}</h3>
                 </div>
@@ -220,11 +230,11 @@ const designCMS = [
 
 const Design = () => {
     return (
-        <div className='design-container'>
+        <div className='stack-container'>
             <h1>DESIGN / CMS</h1>
 
             {designCMS.map((tech) => (
-                <div className='design-box'>
+                <div className='box'>
                     <Icon icon={tech.icon}></Icon>
                     <h3>{tech.text}</h3>
                 </div>
@@ -258,10 +268,10 @@ const backend = [
 
 const Backend = () => {
     return (
-        <div className='backend-container'>
+        <div className='stack-container'>
             <h1>BACKEND</h1>
             {backend.map((tech) => (
-                <div className='backend-box'>
+                <div className='box'>
                     <Icon icon={tech.icon}></Icon>
                     <h3>{tech.text}</h3>
                 </div>
@@ -270,9 +280,75 @@ const Backend = () => {
     )
 }
 
+const MyStack = () => {
+    return (
+        <section id='stack'>
+            <h1>My Stack</h1>
+            <div>{<Frontend />} {<Design />} {<Backend />}</div>
+        </section>
+    )
+}
+
 const Connect = () => {
     // add form information followed by icons
+    return (
+        <div className='contact-info-container'>
+            <h1>CONNECT WITH TYLER</h1>
+            <form>
+                <div className='contact-info-top'>
+                    <input id="name" placeholder="name" type='text'></input>
+                    <input id="email" placeholder="email" type='email'></input>
+                </div>
+                <input id="subject" placeholder='subject' type='text'></input>
+                <textarea id="message" placeholder='message'></textarea>
+            </form>
+        </div>
+    )
 
+}
+
+const ContactIcons = [
+    {
+        icon: 'carbon:email',
+    },
+    {
+        icon: 'bi:phone',
+    },
+    {
+        icon: 'feather:github',
+    },
+    {
+        icon: 'eva:linkedin-fill',
+    },
+    {
+        icon: 'carbon:document-download',
+    }
+
+]
+
+const Contact = () => {
+    return (
+        <div className='contact-buttons'>
+            <div className='hex'>
+                {ContactIcons.map((index) => (
+                    <Icon icon={index.icon}></Icon>))}
+
+            </div>
+        </div>
+    )
+}
+
+
+const SideBar = () => {
+    return (
+        <div className='side-bar'>
+            <div className='side-icon'>
+                {ContactIcons.map((index) => (
+                    <Icon icon={index.icon}></Icon>))}
+
+            </div>
+        </div>
+    )
 }
 
 
@@ -280,8 +356,4 @@ const Connect = () => {
 
 
 
-
-
-
-
-ReactDOM.render([header, hero, about, <Cards />, <Frontend />, <Design />, <Backend />], document.getElementById("root"));
+ReactDOM.render([header, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />], document.getElementById("root"));

@@ -1,0 +1,24 @@
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.hero-header {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: var(--xlFont);
+  margin: 0;
+}
+
+.job {
+  font-size: var(--lFont);
+}
+.lName {
+  background: #fff;
+  color: #000;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+}

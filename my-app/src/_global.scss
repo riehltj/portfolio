@@ -1,0 +1,27 @@
+:root {
+  --main-width: 72vw;
+  --sFont: 1rem;
+  --mFont: 1.2rem;
+  --lFont: 2rem;
+  --xlFont: 4rem;
+}
+
+$main-width: 72vw;
+$sFont: 1rem;
+$mFont: 1.2rem;
+$lFont: 2rem;
+$xlFont: 4rem;
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: #2f4454;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: $sFont;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}

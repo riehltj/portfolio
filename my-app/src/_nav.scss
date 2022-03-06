@@ -1,0 +1,30 @@
+#heroSection,
+#aboutSection {
+  padding: 5rem 0;
+}
+#headerSection {
+  border-bottom: white 3px solid;
+}
+#header {
+  width: $main-width;
+  margin: auto;
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+.navIcon,
+.navLinks-container {
+  margin-left: auto;
+}
+.navLinks-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navLinks {
+  margin: 0 1vw 0 1vw;
+}
