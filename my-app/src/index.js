@@ -11,11 +11,11 @@ const cvHeaderLink = (
     </a>
 );
 
-const navIcon = (
-    <a href="#nav" className="navIcon">
-        <span class="material-icons-outlined">menu</span>
-    </a>
-);
+// const navIcon = (
+//     <a href="#nav" className="navIcon">
+//         <span class="material-icons-outlined">menu</span>
+//     </a>
+// );
 
 const navLinks = (
     <div className="navLinks-container">
@@ -108,37 +108,82 @@ const projectList = [
     {
         id: 0,
         header: "SOS CAT Tucson",
-        img: "/cards/SOSCat.png",
-        src: "https://riehltj.github.io/SOSCatTucson/",
-        alt: "SOS Cat Web - Screenshot",
+        img: "/cards/sosCat_ss.png",
+        src: "https://happy-fermi-406b5b.netlify.app/",
+        alt: "SOS Cat Website Screenshot",
+        learnMore: {
+            overview: "overview text",
+            intialDesign: "/cards/old_sos_ss.png",
+            researchReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            intialSteps: [{
+                header1: "HTML",
+                ul1: [{
+                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                }],
+                icon1: "fa-brands:js-square",
+
+                header2: "CSS/SASS",
+                ul2: [{
+                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                }],
+                icon2: "fa-brands:js-square",
+                header3: "JS/Swiper",
+                ul3: [{
+                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                }],
+                icon3: "fa-brands:js-square",
+
+            }],
+        },
     },
     {
         id: 1,
-        header: "Motivation Bot",
-        img: "/cards/motivation ss.png",
-        src: "https://riehltj.github.io/SOSCatTucson/",
-        alt: "SOS Cat Web - Screenshot",
+        header: "Motivation App",
+        img: "/cards/motivation_ss.png",
+        src: "https://relaxed-hermann-78dd8e.netlify.app/",
+        alt: "Motivation Bot Screenshot",
+        learnMore: {
+            overview: "hi",
+        }
     },
     {
         id: 2,
-        header: "SOS CAT Tucson",
-        img: "/cards/watch img.png",
-        src: "https://riehltj.github.io/SOSCatTucson/",
-        alt: "SOS Cat Web - Screenshot",
+        header: "iOS Watch App",
+        img: "/cards/watch_cloud_ss.png",
+        src: "https://riehltj.github.io/SunscreenApp/",
+        alt: "Sunscreen App - Screenshot",
+        learnMore: {
+            overview: "hi",
+        },
     },
     {
         id: 3,
-        header: "SOS CAT Tucson",
-        img: "/cards/todo img.png",
-        src: "https://riehltj.github.io/SOSCatTucson/",
-        alt: "SOS Cat Web - Screenshot",
+        header: "Raytheon Core Survey",
+        img: "/cards/raytheon image.png",
+        src: "https://riehltj.github.io/gate5Collab/main.html",
+        alt: "Raytheon Core - Screenshot",
+        learnMore: {
+            overview: "hi",
+        },
     },
     {
         id: 4,
         header: "SOS CAT Tucson",
         img: "/cards/todo img.png",
-        src: "https://riehltj.github.io/SOSCatTucson/",
-        alt: "SOS Cat Web - Screenshot",
+        src: "https://wizardly-edison-54231c.netlify.app/",
+        alt: "To do app - Screenshot",
+        learnMore: {
+            overview: "hi",
+        },
     },
 ]
 
@@ -149,20 +194,37 @@ const Cards = () => {
             <h1 className='project-title'>PROJECTS</h1>
             <div className="card-container">
                 {projectList.map((project) => (
-                    <div className='card'>
-                        <h1 className="header">{project.header}</h1>
-                        <a href={project.src}>
-                            <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
+                    <div className="card-shell">
+                        <div className='card'>
+                            <h1 className="header">{project.header}</h1>
+                            <a href={project.src}>
+                                <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
 
-                        </a>
-                        <h1 id={project.id}>Learn More <Icon icon="gridicons:dropdown" /></h1>
+                            </a>
+                            <a href="#99" className="learn-btn" id={"project_" + project.id}> <h1> Learn More <Icon icon="gridicons:dropdown" /></h1></a>
+                        </div>
+                        <div className='learn-more-dropdown hide'>
+                            <div className="card">
+                                <h1>Overview</h1>
+                                {console.log("hi")}
+                                <p>{project.learnMore.overview}</p>
+                            </div>
+
+                        </div>
                     </div>
                 ))
                 }
+
+
             </div >
-        </section>
+        </section >
     );
 };
+
+
+
+
+
 
 //MY STACK SECTION
 
@@ -357,3 +419,13 @@ const SideBar = () => {
 
 
 ReactDOM.render([header, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />], document.getElementById("root"));
+
+//listening to "learn more"
+document.querySelectorAll('.learn-btn').forEach(item => {
+    item.addEventListener('click', event => {
+        item.parentElement.nextElementSibling.classList.remove('hide')
+        item.parentElement.nextElementSibling.classList.add('show')
+
+
+    })
+})
