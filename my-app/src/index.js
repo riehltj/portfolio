@@ -102,7 +102,8 @@ const about = (
         <div id="aboutR">{profilePic}</div>
     </section>
 )
-
+//Learn More List
+const spacerList = ["1. Conceptualize", "2. Frontend Code", "3. CMS Integration", "4. Backend Code", "5. Deployment/Review"]
 //Project Section
 const projectList = [
     {
@@ -187,6 +188,31 @@ const projectList = [
     },
 ]
 
+const cardSpacer = (title) => {
+
+    return (
+        <div div className='card-spacer' >
+            <div className='shapes'>
+                <div className='rect'></div>
+                <div className='circle'></div>
+                <div className='rect'></div>
+            </div>
+            <div className='card-spacer-title'>{title}</div>
+        </div >
+    )
+
+}
+
+const learnMoreCard = (title, words, img, icon) => {
+
+    return (
+        < div className="card show" >
+            <h1>{title}</h1>
+            <p>{words}</p>
+            <img width='50' src={process.env.PUBLIC_URL + img}></img>
+            <Icon>{icon}</Icon>
+        </div >)
+}
 
 const Cards = () => {
     return (
@@ -194,7 +220,7 @@ const Cards = () => {
             <h1 className='project-title'>PROJECTS</h1>
             <div className="card-container">
                 {projectList.map((project) => (
-                    <div className="card-shell">
+                    <div className="card-shell" >
                         <div className='card'>
                             <h1 className="header">{project.header}</h1>
                             <a href={project.src}>
@@ -204,11 +230,11 @@ const Cards = () => {
                             <a href="#99" className="learn-btn" id={"project_" + project.id}> <h1> Learn More <Icon icon="gridicons:dropdown" /></h1></a>
                         </div>
                         <div className='learn-more-dropdown hide'>
-                            <div className="card">
-                                <h1>Overview</h1>
-                                {console.log("hi")}
-                                <p>{project.learnMore.overview}</p>
-                            </div>
+
+                            {learnMoreCard("Overview", project.learnMore.overview, "", "")}
+                            {cardSpacer(spacerList[0])}
+                            {learnMoreCard("Initial Design", "", project.learnMore.intialDesign, "")}
+                            {cardSpacer(spacerList[1])}
 
                         </div>
                     </div>
