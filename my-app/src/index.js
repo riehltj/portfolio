@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import { Icon } from '@iconify/react';
 
-
-
 const cvHeaderLink = (
     <a href="#PDF" className="cvHeaderLink">
         <h3>TYLER RIEHL'S CV</h3>
@@ -105,46 +103,58 @@ const about = (
 //Learn More List
 const spacerList = ["1. Conceptualize", "2. Frontend Code", "3. CMS Integration", "4. Backend Code", "5. Deployment/Review"]
 //Project Section
-const projectList = [
+let projectList = [
     {
         id: 0,
         header: "SOS CAT Tucson",
         img: "/cards/sosCat_ss.png",
         src: "https://happy-fermi-406b5b.netlify.app/",
         alt: "SOS Cat Website Screenshot",
-        learnMore: {
-            overview: "overview text",
-            intialDesign: "/cards/old_sos_ss.png",
-            researchReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            intialSteps: [{
-                header1: "HTML",
-                ul1: [{
-                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                }],
-                icon1: "fa-brands:js-square",
+        learnMore: [
+            {
+                class: 'solo-card',
+                header: "Overview",
+                text: "information about project",
+                image: "",
+                icon: "",
+            },
+            {
+                class: 'duo-card',
+                header: "Initial Design",
+                text: "",
+                image: "/cards/old_sos_ss.png",
+                icon: "",
+            },
+            {
+                class: 'duo-card',
+                header: "Research and Review",
+                text: "Lots of text about the research of the project blah blah",
+                image: "",
+                icon: 'akar-icons:html-fill',
+            },
+            {
+                class: 'tri-card',
+                header: "Step 1. HTML",
+                text: "Enter Text",
+                image: "",
+                icon: "fa-brands:js-square",
+            },
+            {
+                class: 'tri-card',
+                header: "Step 2. CSS",
+                text: "Enter Text",
+                image: "",
+                icon: "fa-brands:js-square",
+            },
+            {
+                class: 'tri-card',
+                header: "Step 3. JS",
+                text: "Enter Text",
+                image: "",
+                icon: "fa-brands:js-square",
+            },
 
-                header2: "CSS/SASS",
-                ul2: [{
-                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                }],
-                icon2: "fa-brands:js-square",
-                header3: "JS/Swiper",
-                ul3: [{
-                    li1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    li2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    li4: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                }],
-                icon3: "fa-brands:js-square",
-
-            }],
-        },
+        ],
     },
     {
         id: 1,
@@ -152,9 +162,14 @@ const projectList = [
         img: "/cards/motivation_ss.png",
         src: "https://relaxed-hermann-78dd8e.netlify.app/",
         alt: "Motivation Bot Screenshot",
-        learnMore: {
-            overview: "hi",
-        }
+        learnMore: [
+            {
+                header: "Enter Heading",
+                text: "Enter Text",
+                image: "",
+                icon: "",
+            },
+        ]
     },
     {
         id: 2,
@@ -162,9 +177,14 @@ const projectList = [
         img: "/cards/watch_cloud_ss.png",
         src: "https://riehltj.github.io/SunscreenApp/",
         alt: "Sunscreen App - Screenshot",
-        learnMore: {
-            overview: "hi",
-        },
+        learnMore: [
+            {
+                header: "Enter Heading",
+                text: "Enter Text",
+                image: "",
+                icon: "",
+            },
+        ]
     },
     {
         id: 3,
@@ -172,9 +192,14 @@ const projectList = [
         img: "/cards/raytheon image.png",
         src: "https://riehltj.github.io/gate5Collab/main.html",
         alt: "Raytheon Core - Screenshot",
-        learnMore: {
-            overview: "hi",
-        },
+        learnMore: [
+            {
+                header: "Enter Heading",
+                text: "Enter Text",
+                image: "",
+                icon: "",
+            },
+        ]
     },
     {
         id: 4,
@@ -182,9 +207,14 @@ const projectList = [
         img: "/cards/todo img.png",
         src: "https://wizardly-edison-54231c.netlify.app/",
         alt: "To do app - Screenshot",
-        learnMore: {
-            overview: "hi",
-        },
+        learnMore: [
+            {
+                header: "Enter Heading",
+                text: "Enter Text",
+                image: "",
+                icon: "",
+            },
+        ]
     },
 ]
 
@@ -203,25 +233,14 @@ const cardSpacer = (title) => {
 
 }
 
-const learnMoreCard = (title, words, img, icon) => {
-
-    return (
-        < div className="card show" >
-            <h1>{title}</h1>
-            <p>{words}</p>
-            <img width='50' src={process.env.PUBLIC_URL + img}></img>
-            <Icon>{icon}</Icon>
-        </div >)
-}
-
 const Cards = () => {
     return (
         <section id='projects'>
             <h1 className='project-title'>PROJECTS</h1>
             <div className="card-container">
                 {projectList.map((project) => (
-                    <div className="card-shell" >
-                        <div className='card'>
+                    < div className="card-shell" >
+                        <div className='card' id={project.id}>
                             <h1 className="header">{project.header}</h1>
                             <a href={project.src}>
                                 <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
@@ -229,17 +248,22 @@ const Cards = () => {
                             </a>
                             <a href="#99" className="learn-btn" id={"project_" + project.id}> <h1> Learn More <Icon icon="gridicons:dropdown" /></h1></a>
                         </div>
-                        <div className='learn-more-dropdown hide'>
+                        < div className='learn-more-dropdown hide' >
 
-                            {learnMoreCard("Overview", project.learnMore.overview, "", "")}
-                            {cardSpacer(spacerList[0])}
-                            {learnMoreCard("Initial Design", "", project.learnMore.intialDesign, "")}
-                            {cardSpacer(spacerList[1])}
-
+                            {project.learnMore.map((hiddenCards) => (
+                                <div className={"large-card " + hiddenCards.class} >
+                                    <h1>{hiddenCards.header}</h1>
+                                    <p>{hiddenCards.text}</p>
+                                    <img width='50' src={process.env.PUBLIC_URL + hiddenCards.image}></img>
+                                    < Icon icon={hiddenCards.icon}></Icon>
+                                </div >
+                            ))}
                         </div>
                     </div>
-                ))
-                }
+                )
+                )}
+
+
 
 
             </div >
@@ -451,7 +475,5 @@ document.querySelectorAll('.learn-btn').forEach(item => {
     item.addEventListener('click', event => {
         item.parentElement.nextElementSibling.classList.remove('hide')
         item.parentElement.nextElementSibling.classList.add('show')
-
-
     })
 })
