@@ -246,7 +246,7 @@ const Cards = () => {
                                 <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
 
                             </a>
-                            <a href="#99" className="learn-btn" id={"project_" + project.id}> <h1> Learn More <Icon icon="gridicons:dropdown" /></h1></a>
+                            <a href="#99" className="learn-btn"> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
                         </div>
                         < div className='learn-more-dropdown hide' >
 
@@ -469,11 +469,28 @@ const SideBar = () => {
 
 
 ReactDOM.render([header, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />], document.getElementById("root"));
-
+let dropped = false;
 //listening to "learn more"
 document.querySelectorAll('.learn-btn').forEach(item => {
     item.addEventListener('click', event => {
-        item.parentElement.nextElementSibling.classList.remove('hide')
-        item.parentElement.nextElementSibling.classList.add('show')
-    })
+
+        if (dropped === true) {
+            item.parentElement.nextElementSibling.classList.add('hide')
+            item.parentElement.nextElementSibling.classList.remove('show')
+            let arrow = item.childNodes[1].childNodes[1];
+            arrow.style = "transform: rotate(0deg)"
+            dropped = false
+
+        }
+        else {
+            item.parentElement.nextElementSibling.classList.remove('hide')
+            item.parentElement.nextElementSibling.classList.add('show')
+            let arrow = item.childNodes[1].childNodes[1];
+            arrow.style = "transform: rotate(180deg)"
+            dropped = true
+        }
+    }
+
+
+    )
 })
