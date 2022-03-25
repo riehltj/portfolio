@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import { Icon } from '@iconify/react';
+import { Icon, listIcons } from '@iconify/react';
+import './styles.css';
+
 
 const cvHeaderLink = (
     <a href="#PDF" className="cvHeaderLink">
@@ -100,8 +102,6 @@ const about = (
         <div id="aboutR">{profilePic}</div>
     </section>
 )
-//Learn More List
-const spacerList = ["1. Conceptualize", "2. Frontend Code", "3. CMS Integration", "4. Backend Code", "5. Deployment/Review"]
 //Project Section
 let projectList = [
     {
@@ -112,47 +112,62 @@ let projectList = [
         alt: "SOS Cat Website Screenshot",
         learnMore: [
             {
-                class: 'solo-card',
-                header: "Overview",
-                text: "information about project",
-                image: "",
-                icon: "",
+                div: 'overview',
+                cards: [
+                    {
+                        header: "Overview",
+                        text: "This project has a lot of overview information",
+                        image: "",
+                        icon: "",
+                    }
+                ]
+
+
+
             },
             {
-                class: 'duo-card',
-                header: "Initial Design",
-                text: "",
-                image: "/cards/old_sos_ss.png",
-                icon: "",
+                spacerName: '1. Conceptualize',
+                div: 'concept',
+                cards: [
+                    {
+                        header: "Initial Design",
+                        text: "",
+                        image: "/cards/old_sos_ss.png",
+                        icon: "",
+                    },
+                    {
+                        header: "Research and Review",
+                        text: "We researched and reviewed everything",
+                        image: "",
+                        icon: "",
+                    },
+                ]
             },
             {
-                class: 'duo-card',
-                header: "Research and Review",
-                text: "Lots of text about the research of the project blah blah",
-                image: "",
-                icon: 'akar-icons:html-fill',
+                spacerName: '2. Frontend Code',
+                div: 'frontend',
+                cards: [
+                    {
+                        header: "HTML",
+                        text: "code blah blah",
+                        image: "",
+                        icon: "",
+                    },
+                    {
+                        header: "CSS",
+                        text: "code blah blah",
+                        image: "",
+                        icon: "",
+                    },
+                    {
+                        header: "JS",
+                        text: "code blah blah",
+                        image: "",
+                        icon: "",
+                    },
+                ]
             },
-            {
-                class: 'tri-card',
-                header: "Step 1. HTML",
-                text: "Enter Text",
-                image: "",
-                icon: "fa-brands:js-square",
-            },
-            {
-                class: 'tri-card',
-                header: "Step 2. CSS",
-                text: "Enter Text",
-                image: "",
-                icon: "fa-brands:js-square",
-            },
-            {
-                class: 'tri-card',
-                header: "Step 3. JS",
-                text: "Enter Text",
-                image: "",
-                icon: "fa-brands:js-square",
-            },
+
 
         ],
     },
@@ -164,10 +179,15 @@ let projectList = [
         alt: "Motivation Bot Screenshot",
         learnMore: [
             {
-                header: "Enter Heading",
-                text: "Enter Text",
-                image: "",
-                icon: "",
+                div: 'overview',
+                cards: [
+                    {
+                        header: "Overview",
+                        text: "This project has a lot of overview information",
+                        image: "",
+                        icon: "",
+                    }
+                ]
             },
         ]
     },
@@ -179,10 +199,16 @@ let projectList = [
         alt: "Sunscreen App - Screenshot",
         learnMore: [
             {
-                header: "Enter Heading",
-                text: "Enter Text",
-                image: "",
-                icon: "",
+                div: 'overview',
+                cards: [
+                    {
+                        header: "Overview",
+                        text: "This project has a lot of overview information",
+                        image: "",
+                        icon: "",
+                    }
+                ]
+
             },
         ]
     },
@@ -194,10 +220,15 @@ let projectList = [
         alt: "Raytheon Core - Screenshot",
         learnMore: [
             {
-                header: "Enter Heading",
-                text: "Enter Text",
-                image: "",
-                icon: "",
+                div: 'overview',
+                cards: [
+                    {
+                        header: "Overview",
+                        text: "This project has a lot of overview information",
+                        image: "",
+                        icon: "",
+                    }
+                ]
             },
         ]
     },
@@ -209,10 +240,15 @@ let projectList = [
         alt: "To do app - Screenshot",
         learnMore: [
             {
-                header: "Enter Heading",
-                text: "Enter Text",
-                image: "",
-                icon: "",
+                div: 'overview',
+                cards: [
+                    {
+                        header: "Overview",
+                        text: "This project has a lot of overview information",
+                        image: "",
+                        icon: "",
+                    }
+                ]
             },
         ]
     },
@@ -232,33 +268,50 @@ const cardSpacer = (title) => {
     )
 
 }
-
 const Cards = () => {
+    const [showText, setShowText] = useState(false);
+    const onClick = () => setShowText(true);
     return (
         <section id='projects'>
             <h1 className='project-title'>PROJECTS</h1>
-            <div className="card-container">
+            <div className="project-container">
                 {projectList.map((project) => (
-                    < div className="card-shell" >
+                    < div className="card-container" >
                         <div className='card' id={project.id}>
                             <h1 className="header">{project.header}</h1>
                             <a href={project.src}>
                                 <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
 
                             </a>
-                            <a href="#99" className="learn-btn"> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
+                            <a href={"#" + project.id} className="learn-btn" onClick={onClick}> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
                         </div>
-                        < div className='learn-more-dropdown hide' >
 
-                            {project.learnMore.map((hiddenCards) => (
-                                <div className={"large-card " + hiddenCards.class} >
-                                    <h1>{hiddenCards.header}</h1>
-                                    <p>{hiddenCards.text}</p>
-                                    <img width='50' src={process.env.PUBLIC_URL + hiddenCards.image}></img>
-                                    < Icon icon={hiddenCards.icon}></Icon>
-                                </div >
-                            ))}
-                        </div>
+
+
+
+                        <CSSTransition in={showText} timeout={200} classNames="my-node">
+
+                            {showText ? (
+                                <div className="dropdown-list hide">
+                                    {project.learnMore.map((dropdownCards) => (
+                                        <div className={dropdownCards.div + " flex"}>
+                                            {dropdownCards.cards.map((objCards) => (
+                                                <div className="dropdown-card">
+                                                    <h1>{objCards.header}</h1>
+                                                    <p>{objCards.text}</p>
+                                                    <img width='50' src={process.env.PUBLIC_URL + objCards.image}></img>
+                                                    <Icon icon={objCards.icon}></Icon>
+
+                                                </div>
+                                            ))}
+
+
+                                        </div>
+
+                                    ))}
+                                </div>) : null}
+                        </CSSTransition>
+
                     </div>
                 )
                 )}
@@ -382,9 +435,10 @@ const Backend = () => {
     return (
         <div className='stack-container'>
             <h1>BACKEND</h1>
+
             {backend.map((tech) => (
                 <div className='box'>
-                    <Icon icon={tech.icon}></Icon>
+                    <Icon class="stack-icon" icon={tech.icon}></Icon>
                     <h3>{tech.text}</h3>
                 </div>
             ))}
@@ -469,10 +523,28 @@ const SideBar = () => {
 
 
 ReactDOM.render([header, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />], document.getElementById("root"));
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
 let dropped = false;
+
+
+
+
 //listening to "learn more"
 document.querySelectorAll('.learn-btn').forEach(item => {
     item.addEventListener('click', event => {
+
+
 
         if (dropped === true) {
             item.parentElement.nextElementSibling.classList.add('hide')

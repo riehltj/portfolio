@@ -8,11 +8,24 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 2vw;
 }
 
 .box {
   height: 5vw;
   width: 5vw;
-  background-color: aqua;
+  background-color: $blueGrey;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.box > .stack-icon {
+  color: red;
+  background-color: red;
+  font-size: 18px;
+}
+.box h3 {
+  text-align: center;
+  color: blue;
 }
