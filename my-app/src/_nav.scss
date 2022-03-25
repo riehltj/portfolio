@@ -28,3 +28,66 @@
 .navLinks {
   margin: 0 1vw 0 1vw;
 }
+
+@media screen and (max-width: 1024px) {
+  #header {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .navBar {
+    display: none !important;
+  }
+}
+
+/* sidebar Nav */
+
+.navBar {
+  position: relative;
+}
+
+.navBar button {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 10;
+  font-size: $section;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.menuNav {
+  // overflow-y: scroll;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  background: white;
+  left: 100vw;
+  // bottom: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  max-width: $main-width;
+  z-index: 9;
+}
+
+.menuNav.showMenu {
+  width: $main-width;
+  left: calc(100vw - #{$main-width});
+  transition: all 0.3s ease-in-out;
+}
+
+.navBar a {
+  display: flex;
+  // padding: 10px 40px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
+}

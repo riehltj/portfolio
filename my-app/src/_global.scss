@@ -6,13 +6,21 @@
   --xlFont: 4rem;
 }
 
+$hexFont: clamp(18px, 5vw, 64px);
+$titleFont: "Oswald";
+$titleWeight: 400;
+$mont: "Montserrat";
+$montWeight: 400;
 $blueGrey: #4c6d86;
 $main-width: 72vw;
 $sFont: 1rem;
 $mFont: 1.2rem;
 $lFont: 2rem;
 $xlFont: 4rem;
-
+$section: clamp(12px, 5vw, 36px);
+$header: clamp(12px, 4vw, 24px);
+$content: clamp(12px, 3vw, 18px);
+$cards: clamp(12px, 3vw, 18px);
 body {
   box-sizing: border-box;
   padding: 0;

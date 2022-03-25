@@ -1,5 +1,7 @@
 .project-title {
   font-size: $mFont;
+  font-family: $titleFont;
+  font-weight: $titleWeight;
   width: 100%;
   text-align: center;
   margin: auto;
@@ -17,11 +19,18 @@
   flex-wrap: wrap;
 }
 .card-container {
-  border: red solid 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.card-container h1 {
+  font-family: $titleFont;
+  font-weight: $titleWeight;
+  text-transform: uppercase;
+  font-size: $cards;
+  text-align: center;
 }
 
 .dropdown-list {
@@ -34,10 +43,12 @@
 .card,
 .dropdown-card {
   margin: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
   background: #fff;
   min-width: 175px;
   min-height: 200px;
@@ -49,11 +60,6 @@
 .card {
   width: 8vw;
   height: 15vw;
-}
-.card h1,
-.dropdown-card h1 {
-  font-size: clamp(12px, 4vw, 18px);
-  text-align: center;
 }
 .card img {
   min-height: 100px;

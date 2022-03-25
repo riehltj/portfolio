@@ -1,31 +1,55 @@
 #stack {
   background: #fff;
   color: black;
+  padding: 2rem 0;
 }
 
+#stack > h1 {
+  text-align: center;
+  font-size: $section;
+  text-transform: uppercase;
+  font-family: $titleFont;
+  font-weight: $titleWeight;
+}
 .stack-container {
+  width: $main-width;
+  margin: auto;
+}
+.stack-container h1 {
+  text-align: left;
+  font-size: $header;
+  font-family: $titleFont;
+  font-weight: $titleWeight;
+}
+.boxes-container {
+  margin-left: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 2vw;
 }
-
 .box {
-  height: 5vw;
-  width: 5vw;
+  height: 6vw;
+  width: 6vw;
+  min-width: 50px;
+  min-height: 60px;
   background-color: $blueGrey;
   color: white;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.box > .stack-icon {
-  color: red;
-  background-color: red;
-  font-size: 18px;
+.box * {
+  color: white;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 .box h3 {
-  text-align: center;
-  color: blue;
+  font-weight: 700;
+  font-size: $content;
 }

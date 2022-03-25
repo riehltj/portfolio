@@ -1,0 +1,108 @@
+.contact-info-container {
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
+}
+
+.contact-info-container h1 {
+  font-size: clamp(12px, 5vw, 36px);
+  font-family: "Oswald";
+  font-weight: 400;
+}
+
+form {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
+  width: 72vw;
+  gap: 1vw;
+}
+
+input,
+textarea {
+  width: 72vw;
+  height: 2rem;
+  min-height: 25px;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  font-family: "Montserrat";
+  font-weight: 400;
+  padding-left: 0.5rem;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+textarea {
+  height: 7rem;
+  min-height: 100px;
+}
+
+.contact-info-top {
+  width: 72vw;
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: center;
+
+  align-items: center;
+  gap: 1vw;
+}
+
+.contact-info-top input {
+  width: 100%;
+}
+
+input[type="submit"] {
+  margin-left: auto;
+  width: 10vw;
+  min-width: 100px;
+  text-transform: lowercase;
+  font-size: clamp(12px, 3vw, 18px);
+  font-family: "Montserrat";
+}
+
+.contact-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: $main-width;
+  margin: auto;
+  margin: 5vw auto;
+}
+
+.hex {
+  font-size: $hexFont;
+  height: 10vw;
+  width: 10vw;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.hex:nth-child(even) {
+  background-image: url("../public/hex_tilt.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
+  border-left: solid white 0.1rem;
+  border-right: solid white 0.1rem;
+}
+
+.hex:nth-child(odd) {
+  background-image: url("../public/hex.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
+}

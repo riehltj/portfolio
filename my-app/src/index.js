@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
-import { Icon, listIcons } from '@iconify/react';
-import './styles.css';
+import { CSSTransition } from 'react-transition-group';
+import { Icon } from '@iconify/react';
+import emailjs from '@emailjs/browser';
+import "./style.css"
 
 
 const cvHeaderLink = (
@@ -11,15 +12,45 @@ const cvHeaderLink = (
     </a>
 );
 
-// const navIcon = (
-//     <a href="#nav" className="navIcon">
-//         <span class="material-icons-outlined">menu</span>
-//     </a>
-// );
+const NavIcon = () => {
+    const [navbarOpen, setNavbarOpen] = useState(false)
+    const handleToggle = () => {
+        setNavbarOpen(prev => !prev)
+    }
+    const closeMenu = () => {
+        setNavbarOpen(false)
+    }
+    return (
+        <nav className="navBar">
+            <button onClick={handleToggle}>{navbarOpen ? <Icon style={{ transform: 'rotate(90deg)' }} icon="charm:menu-hamburger" />
+                : <Icon icon="charm:menu-hamburger" />
+            }</button>
+            <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
+                <a href="#aboutSection" className="navLinks" onClick={() => closeMenu()}>
+                    <h3>ABOUT</h3>
+                </a>
+                <a href="#projects" className="navLinks" onClick={() => closeMenu()}>
+                    <h3>PROJECTS</h3>
+                </a>
+                <a href="#stack" className="navLinks" onClick={() => closeMenu()}>
+                    <h3>THE STACK</h3>
+                </a>
+                <a href="#connect" className="navLinks" onClick={() => closeMenu()}>
+                    <h3>CONNECT</h3>
+                </a>
+                <a href="#PDF" className="navLinks" onClick={() => closeMenu()}>
+                    <h3>RESUME</h3>
+                </a>
+            </ul>
+
+        </nav>
+    )
+
+};
 
 const navLinks = (
     <div className="navLinks-container">
-        <a href="#about" className="navLinks">
+        <a href="#aboutSection" className="navLinks">
             <h3>ABOUT</h3>
         </a>
         <a href="#projects" className="navLinks">
@@ -30,9 +61,6 @@ const navLinks = (
         </a>
         <a href="#connect" className="navLinks">
             <h3>CONNECT</h3>
-        </a>
-        <a href="#hire" className="navLinks">
-            <h3>HIRE</h3>
         </a>
     </div>
 );
@@ -91,7 +119,7 @@ const connectBot = (
     </div >
 )
 const connect = (
-    <section id="connect">
+    <section id="small-connect">
         <div className="connectTop">{connectTop}</div>
         <div className="connectBot">{connectBot}</div>
     </section>
@@ -268,6 +296,8 @@ const cardSpacer = (title) => {
     )
 
 }
+
+
 const Cards = () => {
     const [showText, setShowText] = useState(false);
     const onClick = () => setShowText(true);
@@ -281,36 +311,38 @@ const Cards = () => {
                             <h1 className="header">{project.header}</h1>
                             <a href={project.src}>
                                 <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
-
                             </a>
                             <a href={"#" + project.id} className="learn-btn" onClick={onClick}> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
                         </div>
 
-
-
-
-                        <CSSTransition in={showText} timeout={200} classNames="my-node">
-
-                            {showText ? (
-                                <div className="dropdown-list hide">
-                                    {project.learnMore.map((dropdownCards) => (
-                                        <div className={dropdownCards.div + " flex"}>
-                                            {dropdownCards.cards.map((objCards) => (
-                                                <div className="dropdown-card">
-                                                    <h1>{objCards.header}</h1>
-                                                    <p>{objCards.text}</p>
-                                                    <img width='50' src={process.env.PUBLIC_URL + objCards.image}></img>
-                                                    <Icon icon={objCards.icon}></Icon>
-
-                                                </div>
-                                            ))}
+                        <div>
+                            {showText ? <div className="dropdown-list ">
+                                {
+                                    project.learnMore.map((dropdownCards) => (
+                                        <div className={dropdownCards.div + " flex"} >
+                                            {
+                                                dropdownCards.cards.map((objCards) => (
+                                                    <div className="dropdown-card">
+                                                        <h1>{objCards.header}</h1>
+                                                        <p>{objCards.text}</p>
+                                                        <img width='50' src={process.env.PUBLIC_URL + objCards.image}></img>
+                                                        <Icon icon={objCards.icon}></Icon>
+                                                        {console.log(objCards)}
+                                                    </div>
+                                                ))
+                                            }
 
 
                                         </div>
 
-                                    ))}
-                                </div>) : null}
-                        </CSSTransition>
+                                    ))
+                                }
+
+                            </div > : null}
+                            {/* {setShowText(false)} */}
+
+
+                        </div>
 
                     </div>
                 )
@@ -355,20 +387,7 @@ const frontEndStack = [
     },
 ]
 
-const Frontend = () => {
-    return (
-        <div className='stack-container'>
-            <h1>FRONTEND</h1>
 
-            {frontEndStack.map((tech) => (
-                <div className='box'>
-                    <Icon icon={tech.icon}></Icon>
-                    <h3>{tech.text}</h3>
-                </div>
-            ))}
-        </div>
-    )
-}
 
 const designCMS = [
     {
@@ -389,29 +408,16 @@ const designCMS = [
     },
     {
         icon: 'simple-icons:contentful',
-        text: "contentful",
+        text: "cms",
     },
 ]
 
-const Design = () => {
-    return (
-        <div className='stack-container'>
-            <h1>DESIGN / CMS</h1>
 
-            {designCMS.map((tech) => (
-                <div className='box'>
-                    <Icon icon={tech.icon}></Icon>
-                    <h3>{tech.text}</h3>
-                </div>
-            ))}
-        </div>
-    )
-}
 
 const backend = [
     {
         icon: 'akar-icons:node-fill',
-        text: "node js",
+        text: "node",
     },
     {
         icon: 'simple-icons:express',
@@ -430,18 +436,51 @@ const backend = [
         text: "python",
     },
 ]
+const Frontend = () => {
+    return (
+        <div className='stack-container'>
+            <h1>FRONTEND</h1>
+            <div className="boxes-container">
 
+                {frontEndStack.map((tech) => (
+                    <div className='box'>
+                        <Icon icon={tech.icon}></Icon>
+                        <h3>{tech.text}</h3>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+const Design = () => {
+    return (
+        <div className='stack-container'>
+            <h1>DESIGN / CMS</h1>
+            <div className="boxes-container">
+
+                {designCMS.map((tech) => (
+                    <div className='box'>
+                        <Icon icon={tech.icon}></Icon>
+                        <h3>{tech.text}</h3>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
 const Backend = () => {
     return (
         <div className='stack-container'>
             <h1>BACKEND</h1>
+            <div className="boxes-container">
+                {backend.map((tech) => (
+                    <div className='box'>
+                        <Icon className="stack-icon" icon={tech.icon}></Icon>
+                        <h3>{tech.text}</h3>
+                    </div>
+                ))}
+            </div>
 
-            {backend.map((tech) => (
-                <div className='box'>
-                    <Icon class="stack-icon" icon={tech.icon}></Icon>
-                    <h3>{tech.text}</h3>
-                </div>
-            ))}
         </div>
     )
 }
@@ -449,45 +488,62 @@ const Backend = () => {
 const MyStack = () => {
     return (
         <section id='stack'>
-            <h1>My Stack</h1>
+            <h1>The Stack</h1>
             <div>{<Frontend />} {<Design />} {<Backend />}</div>
         </section>
     )
 }
 
 const Connect = () => {
-    // add form information followed by icons
-    return (
-        <div className='contact-info-container'>
-            <h1>CONNECT WITH TYLER</h1>
-            <form>
-                <div className='contact-info-top'>
-                    <input id="name" placeholder="name" type='text'></input>
-                    <input id="email" placeholder="email" type='email'></input>
-                </div>
-                <input id="subject" placeholder='subject' type='text'></input>
-                <textarea id="message" placeholder='message'></textarea>
-            </form>
-        </div>
-    )
+    const form = useRef();
 
-}
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_bhjetju', 'template_pp7hr9g', form.current, 'frrYDDb8P63OH1l1V')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
+
+    return (<div id="connect" className='contact-info-container'>
+        <h1>CONNECT WITH TYLER</h1>
+        <form ref={form} onSubmit={sendEmail}>
+
+            <div className='contact-info-top'>
+                <input id="name" placeholder="name" name="from_name" type='text'></input>
+                <input id="email" placeholder="email" name="from_email" type='email'></input>
+            </div>
+            <input id="subject" placeholder='subject' name="subject" type='text'></input>
+            <textarea id="message" placeholder='message' name="message"></textarea>
+            <input type="submit" value="send" />
+        </form>
+    </div>
+    );
+};
 
 const ContactIcons = [
     {
         icon: 'carbon:email',
+        href: 'mailto:tyler.riehl16@gmail.com',
     },
     {
         icon: 'bi:phone',
+        href: 'tel:4405377162',
     },
     {
         icon: 'feather:github',
+        href: 'https://github.com/riehltj',
     },
     {
         icon: 'eva:linkedin-fill',
+        href: "https://www.linkedin.com/in/tylerriehl2016/",
     },
     {
         icon: 'carbon:document-download',
+        href: "#",
     }
 
 ]
@@ -495,11 +551,11 @@ const ContactIcons = [
 const Contact = () => {
     return (
         <div className='contact-buttons'>
-            <div className='hex'>
-                {ContactIcons.map((index) => (
-                    <Icon icon={index.icon}></Icon>))}
-
-            </div>
+            {ContactIcons.map((index) => (
+                <a target="_blank" href={index.href} className='hex'>
+                    <Icon icon={index.icon}></Icon>
+                </a>
+            ))}
         </div>
     )
 }
@@ -508,61 +564,67 @@ const Contact = () => {
 const SideBar = () => {
     return (
         <div className='side-bar'>
-            <div className='side-icon'>
-                {ContactIcons.map((index) => (
-                    <Icon icon={index.icon}></Icon>))}
+            {ContactIcons.map((index) => (
+                <a target="_blank" href={index.href} className='sidebar'>
+                    <Icon icon={index.icon}></Icon>
+                </a>
+            ))}
 
-            </div>
         </div>
     )
 }
 
+const Footer = () => {
+    return (
+        <footer>
+            <h4>BUILT WITH REACT</h4>
+        </footer>
+    )
+}
+
+ReactDOM.render([header, <NavIcon />, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />, <Footer />], document.getElementById("root"));
 
 
+// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault();
 
+//         document.querySelector(this.getAttribute('href')).scrollIntoView({
+//             behavior: 'smooth'
+//         });
+//     });
+// });
 
-
-ReactDOM.render([header, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />], document.getElementById("root"));
-
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-let dropped = false;
+// let dropped = false;
 
 
 
 
 //listening to "learn more"
-document.querySelectorAll('.learn-btn').forEach(item => {
-    item.addEventListener('click', event => {
+// document.querySelectorAll('.learn-btn').forEach(item => {
+//     item.addEventListener('click', event => {
 
 
 
-        if (dropped === true) {
-            item.parentElement.nextElementSibling.classList.add('hide')
-            item.parentElement.nextElementSibling.classList.remove('show')
-            let arrow = item.childNodes[1].childNodes[1];
-            arrow.style = "transform: rotate(0deg)"
-            dropped = false
+//         if (dropped === true) {
+//             item.parentElement.nextElementSibling.classList.add('hide')
+//             item.parentElement.nextElementSibling.classList.remove('show')
+//             let arrow = item.childNodes[1].childNodes[1];
+//             arrow.style = "transform: rotate(0deg)"
+//             dropped = false
 
-        }
-        else {
-            item.parentElement.nextElementSibling.classList.remove('hide')
-            item.parentElement.nextElementSibling.classList.add('show')
-            let arrow = item.childNodes[1].childNodes[1];
-            arrow.style = "transform: rotate(180deg)"
-            dropped = true
-        }
-    }
+//         }
+//         else {
+//             item.parentElement.nextElementSibling.classList.remove('hide')
+//             item.parentElement.nextElementSibling.classList.add('show')
+//             let arrow = item.childNodes[1].childNodes[1];
+//             arrow.style = "transform: rotate(180deg)"
+//             dropped = true
+//         }
+//     }
 
 
-    )
-})
+//     )
+// })
+
+
