@@ -7,7 +7,7 @@ import "./style.css"
 
 
 const cvHeaderLink = (
-    <a href="#PDF" className="cvHeaderLink">
+    <a href={process.env.PUBLIC_URL + "TylerJRiehl2022.pdf"} download className="cvHeaderLink">
         <h3>TYLER RIEHL'S CV</h3>
     </a>
 );
@@ -38,7 +38,7 @@ const NavIcon = () => {
                 <a href="#connect" className="navLinks" onClick={() => closeMenu()}>
                     <h3>CONNECT</h3>
                 </a>
-                <a href="#PDF" className="navLinks" onClick={() => closeMenu()}>
+                <a href="TylerJRiehl2022.pdf" className="navLinks" onClick={() => closeMenu()}>
                     <h3>RESUME</h3>
                 </a>
             </ul>

@@ -52,17 +52,21 @@
   top: 1rem;
   z-index: 10;
   font-size: $section;
+  color: black;
   cursor: pointer;
   background: transparent;
   outline: none;
   border: none;
+  border-bottom: solid 1px white;
 }
 
 .menuNav {
-  // overflow-y: scroll;
+  transition: all 0.3s ease-in-out;
+
+  overflow-y: scroll;
   list-style: none;
   position: fixed;
-  top: 0;
+  top: -20px;
   background: white;
   left: 100vw;
   // bottom: 0;
@@ -74,20 +78,21 @@
 }
 
 .menuNav.showMenu {
+  color: black;
   width: $main-width;
-  left: calc(100vw - #{$main-width});
+  left: 20vw;
   transition: all 0.3s ease-in-out;
 }
 
 .navBar a {
   display: flex;
-  // padding: 10px 40px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.5rem;
   text-decoration: none;
+  border-bottom: solid black 3px;
   color: black;
   text-transform: uppercase;
   font-weight: bold;
-}
-
-.menuNav li:first-child {
-  margin-top: 7rem;
+  width: $main-width;
 }
