@@ -284,7 +284,7 @@ a {
 }
 
 .project-title {
-  font-size: 1.2rem;
+  font-size: clamp(12px, 5vw, 36px);
   font-family: "Oswald";
   font-weight: 400;
   width: 100%;
@@ -295,7 +295,7 @@ a {
 
 .project-container {
   width: 72vw;
-  margin: 0px calc((100vw - 72vw) / 2);
+  margin: 2rem calc((100vw - 72vw) / 2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -406,13 +406,21 @@ a {
 }
 
 .hide {
-  display: none;
+  display: inline;
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .show {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  height: auto;
+  width: auto;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #stack {
@@ -640,39 +648,10 @@ input[type="submit"] {
   background-size: 70% auto;
 }
 
-.side-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: black;
-  font-size: clamp(12px, 3vw, 18px);
-  gap: 3vw;
-}
-
 footer {
   width: 95%;
   text-align: right;
   margin-bottom: 0.5rem;
   font-size: clamp(12px, 3vw, 18px);
-}
-
-@media screen and (max-width: 1024px) {
-  .side-bar {
-    display: none !important;
-  }
 }
 /*# sourceMappingURL=style.css.map */

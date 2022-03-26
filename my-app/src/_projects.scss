@@ -1,5 +1,5 @@
 .project-title {
-  font-size: $mFont;
+  font-size: $section;
   font-family: $titleFont;
   font-weight: $titleWeight;
   width: 100%;
@@ -10,7 +10,7 @@
 
 .project-container {
   width: $main-width;
-  margin: 0px calc((100vw - #{$main-width}) / 2);
+  margin: 2rem calc((100vw - #{$main-width}) / 2);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -75,8 +75,17 @@
   justify-content: space-around;
 }
 .hide {
-  display: none;
+  display: inline;
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 .show {
-  display: flex;
+  // display: flex;
+  height: auto;
+  width: auto;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
 }

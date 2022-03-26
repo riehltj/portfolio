@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
 import { Icon } from '@iconify/react';
 import emailjs from '@emailjs/browser';
 import "./style.css"
@@ -138,66 +137,12 @@ let projectList = [
         img: "/cards/sosCat_ss.png",
         src: "https://happy-fermi-406b5b.netlify.app/",
         alt: "SOS Cat Website Screenshot",
-        learnMore: [
-            {
-                div: 'overview',
-                cards: [
-                    {
-                        header: "Overview",
-                        text: "This project has a lot of overview information",
-                        image: "",
-                        icon: "",
-                    }
-                ]
-
-
-
-            },
-            {
-                spacerName: '1. Conceptualize',
-                div: 'concept',
-                cards: [
-                    {
-                        header: "Initial Design",
-                        text: "",
-                        image: "/cards/old_sos_ss.png",
-                        icon: "",
-                    },
-                    {
-                        header: "Research and Review",
-                        text: "We researched and reviewed everything",
-                        image: "",
-                        icon: "",
-                    },
-                ]
-            },
-            {
-                spacerName: '2. Frontend Code',
-                div: 'frontend',
-                cards: [
-                    {
-                        header: "HTML",
-                        text: "code blah blah",
-                        image: "",
-                        icon: "",
-                    },
-                    {
-                        header: "CSS",
-                        text: "code blah blah",
-                        image: "",
-                        icon: "",
-                    },
-                    {
-                        header: "JS",
-                        text: "code blah blah",
-                        image: "",
-                        icon: "",
-                    },
-                ]
-            },
-
-
-        ],
+        overview: {
+            header: "Overview",
+            text: "This project has a lot of overview information",
+            image: "",
+            icon: "",
+        }
     },
     {
         id: 1,
@@ -205,19 +150,12 @@ let projectList = [
         img: "/cards/motivation_ss.png",
         src: "https://relaxed-hermann-78dd8e.netlify.app/",
         alt: "Motivation Bot Screenshot",
-        learnMore: [
-            {
-                div: 'overview',
-                cards: [
-                    {
-                        header: "Overview",
-                        text: "This project has a lot of overview information",
-                        image: "",
-                        icon: "",
-                    }
-                ]
-            },
-        ]
+        overview: {
+            header: "Overview",
+            text: "This project has a lot of overview information",
+            image: "",
+            icon: "",
+        },
     },
     {
         id: 2,
@@ -225,20 +163,12 @@ let projectList = [
         img: "/cards/watch_cloud_ss.png",
         src: "https://riehltj.github.io/SunscreenApp/",
         alt: "Sunscreen App - Screenshot",
-        learnMore: [
-            {
-                div: 'overview',
-                cards: [
-                    {
-                        header: "Overview",
-                        text: "This project has a lot of overview information",
-                        image: "",
-                        icon: "",
-                    }
-                ]
-
-            },
-        ]
+        overview: {
+            header: "Overview",
+            text: "This project has a lot of overview information",
+            image: "",
+            icon: "",
+        },
     },
     {
         id: 3,
@@ -246,19 +176,12 @@ let projectList = [
         img: "/cards/raytheon image.png",
         src: "https://riehltj.github.io/gate5Collab/main.html",
         alt: "Raytheon Core - Screenshot",
-        learnMore: [
-            {
-                div: 'overview',
-                cards: [
-                    {
-                        header: "Overview",
-                        text: "This project has a lot of overview information",
-                        image: "",
-                        icon: "",
-                    }
-                ]
-            },
-        ]
+        overview: {
+            header: "Overview",
+            text: "This project has a lot of overview information",
+            image: "",
+            icon: "",
+        },
     },
     {
         id: 4,
@@ -266,37 +189,14 @@ let projectList = [
         img: "/cards/todo img.png",
         src: "https://wizardly-edison-54231c.netlify.app/",
         alt: "To do app - Screenshot",
-        learnMore: [
-            {
-                div: 'overview',
-                cards: [
-                    {
-                        header: "Overview",
-                        text: "This project has a lot of overview information",
-                        image: "",
-                        icon: "",
-                    }
-                ]
-            },
-        ]
+        overview: {
+            header: "Overview",
+            text: "This project has a lot of overview information",
+            image: "",
+            icon: "",
+        },
     },
 ]
-
-const cardSpacer = (title) => {
-
-    return (
-        <div div className='card-spacer' >
-            <div className='shapes'>
-                <div className='rect'></div>
-                <div className='circle'></div>
-                <div className='rect'></div>
-            </div>
-            <div className='card-spacer-title'>{title}</div>
-        </div >
-    )
-
-}
-
 
 const Cards = () => {
     const [showText, setShowText] = useState(false);
@@ -315,33 +215,14 @@ const Cards = () => {
                             <a href={"#" + project.id} className="learn-btn" onClick={onClick}> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
                         </div>
 
-                        <div>
-                            {showText ? <div className="dropdown-list ">
-                                {
-                                    project.learnMore.map((dropdownCards) => (
-                                        <div className={dropdownCards.div + " flex"} >
-                                            {
-                                                dropdownCards.cards.map((objCards) => (
-                                                    <div className="dropdown-card">
-                                                        <h1>{objCards.header}</h1>
-                                                        <p>{objCards.text}</p>
-                                                        <img width='50' src={process.env.PUBLIC_URL + objCards.image}></img>
-                                                        <Icon icon={objCards.icon}></Icon>
-                                                        {console.log(objCards)}
-                                                    </div>
-                                                ))
-                                            }
-
-
-                                        </div>
-
-                                    ))
-                                }
-
-                            </div > : null}
-                            {/* {setShowText(false)} */}
-
-
+                        <div className="dropdown-list flex hide">
+                            <div className="dropdown-card">
+                                <h1>{project.overview.header}</h1>
+                                <p>{project.overview.text}</p>
+                                <img width='50' src={process.env.PUBLIC_URL + project.overview.image}></img>
+                                <Icon icon={project.overview.icon}></Icon>
+                                {console.log(project.overview)}
+                            </div>
                         </div>
 
                     </div>
@@ -561,18 +442,6 @@ const Contact = () => {
 }
 
 
-const SideBar = () => {
-    return (
-        <div className='side-bar'>
-            {ContactIcons.map((index) => (
-                <a target="_blank" href={index.href} className='sidebar'>
-                    <Icon icon={index.icon}></Icon>
-                </a>
-            ))}
-
-        </div>
-    )
-}
 
 const Footer = () => {
     return (
@@ -582,49 +451,65 @@ const Footer = () => {
     )
 }
 
-ReactDOM.render([header, <NavIcon />, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <SideBar />, <Footer />], document.getElementById("root"));
+ReactDOM.render([header, <NavIcon />, hero, about, <Cards />, <MyStack />, <Connect />, <Contact />, <Footer />], document.getElementById("root"));
 
 
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-//         document.querySelector(this.getAttribute('href')).scrollIntoView({
-//             behavior: 'smooth'
-//         });
-//     });
-// });
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-// let dropped = false;
-
-
-
-
-//listening to "learn more"
-// document.querySelectorAll('.learn-btn').forEach(item => {
-//     item.addEventListener('click', event => {
+let dropped = false;
 
 
 
-//         if (dropped === true) {
-//             item.parentElement.nextElementSibling.classList.add('hide')
-//             item.parentElement.nextElementSibling.classList.remove('show')
-//             let arrow = item.childNodes[1].childNodes[1];
-//             arrow.style = "transform: rotate(0deg)"
-//             dropped = false
 
-//         }
-//         else {
-//             item.parentElement.nextElementSibling.classList.remove('hide')
-//             item.parentElement.nextElementSibling.classList.add('show')
-//             let arrow = item.childNodes[1].childNodes[1];
-//             arrow.style = "transform: rotate(180deg)"
-//             dropped = true
-//         }
-//     }
+// listening to "learn more"
+document.querySelectorAll('.learn-btn').forEach(item => {
+    item.addEventListener('click', event => {
+
+        if (item.parentElement.nextElementSibling.classList.contains('hide')) {
+            item.parentElement.nextElementSibling.classList.remove('hide')
+            item.parentElement.nextElementSibling.classList.add('show')
+            let arrow = item.childNodes[1].childNodes[1];
+            arrow.style = "transform: rotate(180deg)"
+        }
+        else {
+            item.parentElement.nextElementSibling.classList.add('hide')
+            item.parentElement.nextElementSibling.classList.remove('show')
+            let arrow = item.childNodes[1].childNodes[1];
+            arrow.style = "transform: rotate(0deg)"
+        }
 
 
-//     )
-// })
+
+
+
+
+        // if (dropped === true) {
+        //     item.parentElement.nextElementSibling.classList.add('hide')
+        //     item.parentElement.nextElementSibling.classList.remove('show')
+        //     let arrow = item.childNodes[1].childNodes[1];
+        //     arrow.style = "transform: rotate(0deg)"
+        //     dropped = false
+
+        // }
+        // else {
+        //     item.parentElement.nextElementSibling.classList.remove('hide')
+        //     item.parentElement.nextElementSibling.classList.add('show')
+        //     let arrow = item.childNodes[1].childNodes[1];
+        //     arrow.style = "transform: rotate(180deg)"
+        //     dropped = true
+        // }
+    }
+
+
+    )
+})
 
 
