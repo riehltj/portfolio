@@ -380,8 +380,8 @@ a {
       -ms-flex-pack: start;
           justify-content: flex-start;
   background: #fff;
-  min-width: 175px;
-  min-height: 200px;
+  min-width: 200px;
+  min-height: 225px;
   color: black;
   margin: 1rem;
   border-radius: 20px;
@@ -409,9 +409,10 @@ a {
 }
 
 .card img {
-  min-height: 100px;
+  min-height: 150px;
+  min-width: 90px;
   height: 10vw;
-  width: 100%;
+  width: 6vw;
 }
 
 .flex {
