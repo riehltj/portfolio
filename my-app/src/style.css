@@ -317,10 +317,10 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -356,7 +356,6 @@ a {
 
 .card,
 .dropdown-card {
-  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -376,16 +375,32 @@ a {
   color: black;
   margin: 1rem;
   border-radius: 20px;
+  gap: 0;
 }
 
 .card {
-  width: 8vw;
-  height: 15vw;
+  width: 14vw;
+  height: 18vw;
+}
+
+.dropdown-card {
+  width: 40vw;
+  height: 18vw;
+}
+
+.dropdown-card h1 {
+  padding: 0;
+}
+
+.dropdown-card p {
+  margin-top: 0;
+  padding: 0;
+  width: 90%;
 }
 
 .card img {
   min-height: 100px;
-  height: 5vw;
+  height: 10vw;
   width: 100%;
 }
 
@@ -406,7 +421,6 @@ a {
 }
 
 .hide {
-  display: inline;
   height: 0px;
   width: 0px;
   overflow: hidden;
@@ -616,9 +630,9 @@ input[type="submit"] {
 }
 
 .hex {
-  font-size: clamp(18px, 5vw, 64px);
-  height: 10vw;
-  width: 10vw;
+  font-size: clamp(12px, 4vw, 48px);
+  height: 8vw;
+  width: 8vw;
   color: black;
   display: -webkit-box;
   display: -ms-flexbox;

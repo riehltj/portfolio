@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { Icon } from '@iconify/react';
 import emailjs from '@emailjs/browser';
-import "./style.css"
-
+import "./style.css";
 
 const cvHeaderLink = (
     <a href={process.env.PUBLIC_URL + "TylerJRiehl2022.pdf"} download className="cvHeaderLink">
@@ -37,12 +36,12 @@ const NavIcon = () => {
                 <a href="#connect" className="navLinks" onClick={() => closeMenu()}>
                     <h3>CONNECT</h3>
                 </a>
-                <a href="TylerJRiehl2022.pdf" className="navLinks" onClick={() => closeMenu()}>
+                <a href={process.env.PUBLIC_URL + "TylerJRiehl2022.pdf"} className="navLinks" onClick={() => closeMenu()}>
                     <h3>RESUME</h3>
                 </a>
             </ul>
 
-        </nav>
+        </nav >
     )
 
 };
@@ -102,16 +101,16 @@ const connectBot = (
         <a href="tel:440-537-7162" className="icon">
             <Icon icon="bi:phone" />
         </a>
-        <a href="mailto:tyler.riehl16@gmail.com" className="icon">
+        <a href="mailto:tyler.riehl16@gmail.com" target="_blank" className="icon">
             <Icon className="icon" icon="carbon:email" />
         </a>
-        <a href="https://github.com/riehltj" className="icon">
+        <a href="https://github.com/riehltj" target="_blank" className="icon">
             <Icon className="icon" icon="feather:github" />
         </a>
-        <a href="https://www.linkedin.com/in/tylerriehl2016" className="icon">
+        <a href="https://www.linkedin.com/in/tylerriehl2016" target="_blank" className="icon">
             <Icon className="icon" icon="eva:linkedin-fill" />
         </a>
-        <a href="./public/tylerriehl2021.pdf" className='icon'>
+        <a href={process.env.PUBLIC_URL + "/TylerJRiehl2022.pdf"} download className='icon'>
             <Icon className="icon" icon="carbon:document-attachment" />
         </a>
 
@@ -139,7 +138,7 @@ let projectList = [
         alt: "SOS Cat Website Screenshot",
         overview: {
             header: "Overview",
-            text: "This project has a lot of overview information",
+            text: "This project worked with a local non-profit cat rescue in Tucson AZ. Developing a UI/UX scheme using figma, followed up by a client meeting to discuss changes to the design. Following approval of the design the Frontend and CMS integration was completed. After training the staff on the use of the CMS the final PHP email notification was developed to ensure all data was sent the way they wanted it.",
             image: "",
             icon: "",
         }
@@ -152,7 +151,7 @@ let projectList = [
         alt: "Motivation Bot Screenshot",
         overview: {
             header: "Overview",
-            text: "This project has a lot of overview information",
+            text: "This project was developed in order to get a full understanding of Fetch and REST API calling. The secondary achievement was a 100% lighthouse score, the application uses location API and some fun motivational quotes to give the user the motivation they need during the day. Finally a water tracker was developed using custom CSS to make the water drain from the cup every sip, overall a really fun project to work on. ",
             image: "",
             icon: "",
         },
@@ -165,7 +164,7 @@ let projectList = [
         alt: "Sunscreen App - Screenshot",
         overview: {
             header: "Overview",
-            text: "This project has a lot of overview information",
+            text: "This project was my first private client, they wanted to develop a iOS watch app that would let the user know when they should reapply sunscreen based on the weather around the user. I researched and developed a estimated time of application table. Javascript uses this table as well as live weather data from the user to estimate the time needed until reapplication. The timer UI was built with vanialla javascript to better understand the technology.",
             image: "",
             icon: "",
         },
@@ -178,20 +177,46 @@ let projectList = [
         alt: "Raytheon Core - Screenshot",
         overview: {
             header: "Overview",
-            text: "This project has a lot of overview information",
+            text: "This project was my first professional project, while working as a propulsion engineer. I developed the entire survey frontend with a working sharepoint site to deliver supploer data to the customer. The backend team used the information to generate informational packets that were sent out to design engineers.",
             image: "",
             icon: "",
         },
     },
     {
         id: 4,
-        header: "SOS CAT Tucson",
+        header: "To Do App",
         img: "/cards/todo img.png",
         src: "https://wizardly-edison-54231c.netlify.app/",
         alt: "To do app - Screenshot",
         overview: {
             header: "Overview",
-            text: "This project has a lot of overview information",
+            text: "This project was the first project I created, to demonstrate the learning I acquired after my bootcamp.",
+            image: "",
+            icon: "",
+        },
+    },
+    {
+        id: 5,
+        header: "NonProfit Cat Design",
+        img: "/cards/cat_ss.png",
+        src: "https://www.figma.com/proto/qw6epsm0cCKk52LwkxU45e/SOS-Cat-Tucson?node-id=312%3A4&scaling=scale-down&page-id=312%3A3&starting-point-node-id=312%3A4&show-proto-sidebar=1",
+        alt: "Cat Mobile Design",
+        overview: {
+            header: "Overview",
+            text: "This was the initial UI/UX of the SOS Cat Rescue website above, it is a functional demo that allowed the creation of the website. If you click on Earl you can see how the demo was showed to the client.",
+            image: "",
+            icon: "",
+        },
+    },
+    {
+        id: 6,
+        header: "Mock Website Design",
+        img: "/cards/handyman_ss.png",
+        src: "https://www.figma.com/proto/38JWirp4gFsF7cSoUa5hM2/Handy-Man?node-id=2%3A2&starting-point-node-id=2%3A2&show-proto-sidebar=1",
+        alt: "A handyman mobile design",
+        overview: {
+            header: "Overview",
+            text: "This project is an ongoing effort to become a SEO expert. I am currently building this to ensure a very fast low speed while optimizing imagery. More information to come.",
             image: "",
             icon: "",
         },
@@ -199,8 +224,7 @@ let projectList = [
 ]
 
 const Cards = () => {
-    const [showText, setShowText] = useState(false);
-    const onClick = () => setShowText(true);
+
     return (
         <section id='projects'>
             <h1 className='project-title'>PROJECTS</h1>
@@ -212,7 +236,7 @@ const Cards = () => {
                             <a href={project.src}>
                                 <img alt={project.alt} width='50' src={process.env.PUBLIC_URL + project.img}></img>
                             </a>
-                            <a href={"#" + project.id} className="learn-btn" onClick={onClick}> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
+                            <a href={"#" + project.id} className="learn-btn"> <h1> Learn More <Icon id="dropdown-target" rotate="0deg" icon="gridicons:chevron-down" /></h1></a>
                         </div>
 
                         <div className="dropdown-list flex hide">
@@ -424,7 +448,7 @@ const ContactIcons = [
     },
     {
         icon: 'carbon:document-download',
-        href: "#",
+        href: process.env.PUBLIC_URL + "/TylerJRiehl2022.pdf",
     }
 
 ]
@@ -433,7 +457,7 @@ const Contact = () => {
     return (
         <div className='contact-buttons'>
             {ContactIcons.map((index) => (
-                <a target="_blank" href={index.href} className='hex'>
+                <a target="_blank" href={index.href} download className='hex'>
                     <Icon icon={index.icon}></Icon>
                 </a>
             ))}
@@ -464,9 +488,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-let dropped = false;
-
-
 
 
 // listening to "learn more"
@@ -485,27 +506,6 @@ document.querySelectorAll('.learn-btn').forEach(item => {
             let arrow = item.childNodes[1].childNodes[1];
             arrow.style = "transform: rotate(0deg)"
         }
-
-
-
-
-
-
-        // if (dropped === true) {
-        //     item.parentElement.nextElementSibling.classList.add('hide')
-        //     item.parentElement.nextElementSibling.classList.remove('show')
-        //     let arrow = item.childNodes[1].childNodes[1];
-        //     arrow.style = "transform: rotate(0deg)"
-        //     dropped = false
-
-        // }
-        // else {
-        //     item.parentElement.nextElementSibling.classList.remove('hide')
-        //     item.parentElement.nextElementSibling.classList.add('show')
-        //     let arrow = item.childNodes[1].childNodes[1];
-        //     arrow.style = "transform: rotate(180deg)"
-        //     dropped = true
-        // }
     }
 
 

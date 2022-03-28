@@ -20,7 +20,7 @@
 }
 .card-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -42,28 +42,40 @@
 }
 .card,
 .dropdown-card {
-  margin: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
   background: #fff;
   min-width: 175px;
   min-height: 200px;
   color: black;
   margin: 1rem;
   border-radius: 20px;
+  gap: 0;
 }
 
 .card {
-  width: 8vw;
-  height: 15vw;
+  width: 14vw;
+  height: 18vw;
+}
+
+.dropdown-card {
+  width: 40vw;
+  height: 18vw;
+}
+
+.dropdown-card h1 {
+  padding: 0;
+}
+.dropdown-card p {
+  margin-top: 0;
+  padding: 0;
+  width: 90%;
 }
 .card img {
   min-height: 100px;
-  height: 5vw;
+  height: 10vw;
   width: 100%;
 }
 
@@ -75,7 +87,6 @@
   justify-content: space-around;
 }
 .hide {
-  display: inline;
   height: 0px;
   width: 0px;
   overflow: hidden;
@@ -83,7 +94,6 @@
   transition: all 0.3s ease-in-out;
 }
 .show {
-  // display: flex;
   height: auto;
   width: auto;
   opacity: 1;
