@@ -74,6 +74,7 @@ a {
 
 .navLinks {
   margin: 0 1vw 0 1vw;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 1024px) {
@@ -172,6 +173,7 @@ a {
   text-align: center;
   font-size: var(--xlFont);
   margin: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .job {
@@ -239,10 +241,14 @@ a {
 .head-shot {
   width: 15vw;
   min-width: 150px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .connectTitle {
   font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #aboutL {
@@ -291,6 +297,7 @@ a {
   text-align: center;
   margin: auto;
   margin: 2rem 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .project-container {
@@ -327,6 +334,8 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .card-container h1 {
@@ -335,6 +344,7 @@ a {
   text-transform: uppercase;
   font-size: clamp(12px, 3vw, 18px);
   text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .dropdown-list {
@@ -385,7 +395,7 @@ a {
 
 .dropdown-card {
   width: 40vw;
-  height: 18vw;
+  min-height: 18vw;
 }
 
 .dropdown-card h1 {
@@ -440,7 +450,7 @@ a {
 #stack {
   background: #fff;
   color: black;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 #stack > h1 {
@@ -449,6 +459,7 @@ a {
   text-transform: uppercase;
   font-family: "Oswald";
   font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .stack-container {
@@ -461,6 +472,7 @@ a {
   font-size: clamp(12px, 4vw, 24px);
   font-family: "Oswald";
   font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .boxes-container {
@@ -484,7 +496,7 @@ a {
 .box {
   height: 6vw;
   width: 6vw;
-  min-width: 50px;
+  min-width: 55px;
   min-height: 60px;
   background-color: #4c6d86;
   color: white;
@@ -516,6 +528,7 @@ a {
 .box h3 {
   font-weight: 700;
   font-size: clamp(12px, 3vw, 18px);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .contact-info-container {
@@ -539,6 +552,7 @@ a {
   font-size: clamp(12px, 5vw, 36px);
   font-family: "Oswald";
   font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 form {
@@ -608,6 +622,8 @@ input[type="submit"] {
   text-transform: lowercase;
   font-size: clamp(12px, 3vw, 18px);
   font-family: "Montserrat";
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
 
 .contact-buttons {

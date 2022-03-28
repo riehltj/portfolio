@@ -91,7 +91,7 @@ const bio = (
 )
 
 const profilePic = (
-    <img className="head-shot" src="./profile.svg" alt="head shot"></img>
+    <img className="head-shot" src={process.env.PUBLIC_URL + "/headshot.jpeg"} alt="head shot"></img>
 )
 //Making Connect Box
 
@@ -101,16 +101,16 @@ const connectBot = (
         <a href="tel:440-537-7162" className="icon">
             <Icon icon="bi:phone" />
         </a>
-        <a href="mailto:tyler.riehl16@gmail.com" target="_blank" className="icon">
+        <a href="mailto:tyler.riehl16@gmail.com" target="_blank" rel="noopener noreferrer" className="icon">
             <Icon className="icon" icon="carbon:email" />
         </a>
-        <a href="https://github.com/riehltj" target="_blank" className="icon">
+        <a href="https://github.com/riehltj" target="_blank" rel="noopener noreferrer" className="icon">
             <Icon className="icon" icon="feather:github" />
         </a>
-        <a href="https://www.linkedin.com/in/tylerriehl2016" target="_blank" className="icon">
+        <a href="https://www.linkedin.com/in/tylerriehl2016" target="_blank" rel="noopener noreferrer" className="icon">
             <Icon className="icon" icon="eva:linkedin-fill" />
         </a>
-        <a href={process.env.PUBLIC_URL + "/TylerJRiehl2022.pdf"} download className='icon'>
+        <a href={process.env.PUBLIC_URL + "/TylerJRiehl2022.pdf"} download rel="noopener noreferrer" className='icon'>
             <Icon className="icon" icon="carbon:document-attachment" />
         </a>
 
@@ -240,22 +240,17 @@ const Cards = () => {
                         </div>
 
                         <div className="dropdown-list flex hide">
-                            <div className="dropdown-card">
+                            <div id={project.id} className="dropdown-card">
                                 <h1>{project.overview.header}</h1>
                                 <p>{project.overview.text}</p>
                                 <img width='50' src={process.env.PUBLIC_URL + project.overview.image}></img>
                                 <Icon icon={project.overview.icon}></Icon>
-                                {console.log(project.overview)}
                             </div>
                         </div>
 
                     </div>
                 )
                 )}
-
-
-
-
             </div >
         </section >
     );
@@ -457,7 +452,7 @@ const Contact = () => {
     return (
         <div className='contact-buttons'>
             {ContactIcons.map((index) => (
-                <a target="_blank" href={index.href} download className='hex'>
+                <a target="_blank" href={index.href} rel="noopener noreferrer" download className='hex'>
                     <Icon icon={index.icon}></Icon>
                 </a>
             ))}

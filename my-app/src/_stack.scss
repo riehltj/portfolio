@@ -1,7 +1,7 @@
 #stack {
   background: #fff;
   color: black;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 #stack > h1 {
@@ -10,6 +10,7 @@
   text-transform: uppercase;
   font-family: $titleFont;
   font-weight: $titleWeight;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .stack-container {
   width: $main-width;
@@ -20,6 +21,7 @@
   font-size: $header;
   font-family: $titleFont;
   font-weight: $titleWeight;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .boxes-container {
   margin-left: 2rem;
@@ -32,7 +34,7 @@
 .box {
   height: 6vw;
   width: 6vw;
-  min-width: 50px;
+  min-width: 55px;
   min-height: 60px;
   background-color: $blueGrey;
   color: white;
@@ -52,4 +54,5 @@
 .box h3 {
   font-weight: 700;
   font-size: $content;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
